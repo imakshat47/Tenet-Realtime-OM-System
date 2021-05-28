@@ -22,7 +22,11 @@ class BaseClass(object):
     _listening_msg = "Listening..."
 
     _unknown_err = "Oops! Didn't catch that..."
-    _request_err = "Seems unstable Internet!!"
+    # _request_err = "Seems unstable Internet!!"
+    # # File System
+    _audio_files_dir = "dataset/audio/"
+    _text_files_dir = "dataset/text/"
+    
     # SentimentScore
     _ordinal_0 = "  😁   Neutral"
     _ordinal_1 = "  😊   Good"
