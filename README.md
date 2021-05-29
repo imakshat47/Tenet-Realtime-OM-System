@@ -47,7 +47,12 @@ pip install asset/PyAudio-0.2.11-cp37-cp37-win_amd64.whl
 
 2. Run below to hit start:
 ```pyhton
-   py start.py
+   py init.py
 ```
 
 3. Now, Go with the flow!! :wink:
+
+4. Once All done: 
+```python 
+deactivate
+```

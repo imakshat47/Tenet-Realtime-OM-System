@@ -27,8 +27,9 @@ class SentimentScore(BaseClass):
     def _score(self, _txt=''):
         try:
             __txtBlob = TextBlob(_txt)
-            _sentiment_score = round(TextBlob(str(
-                __txtBlob.correct())).sentiment.polarity, self._sentiment_score_round_of_digit)
+            __text = str(__txtBlob.correct())
+            self._check_debug("Intermediate Corrected Text: "+__text)
+            _sentiment_score = round(TextBlob(__text).sentiment.polarity, self._sentiment_score_round_of_digit)
             self._show(self._sentimeter_msg+self.__ordinals(_sentiment_score) +
                        " [ Score: "+str(_sentiment_score)+" ]")
         except:
