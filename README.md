@@ -1,4 +1,4 @@
-# Tenet-Realtime-OM-System :blush:
+# Tenet: Realtime OM System :blush:
 Tenet a Realtime Opinion Mining System 
 - based for Python 3
 
