@@ -17,7 +17,7 @@ class BaseClass(object):
     # AudioText Class
     _sleep_time = 1.5
     _noise_check_duration = 2
-    _listen_in_background_sleep = int(60*3) # For 3min
+    _listen_in_background_sleep = int(30) #  30s  #// For 3min
     _background_noise_msg = "Adjusting for Background Noise!!\nA moment of silence, Please..."
     _available_device_msg = "Available Devices: "
 
