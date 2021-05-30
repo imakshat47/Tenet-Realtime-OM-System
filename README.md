@@ -15,7 +15,7 @@ git clone https://github.com/imakshat47/Tenet-Realtime-OM-System.git
 2. Check if Microphone connected to PC.
 
 
-3. Activate a virtual env
+3. Go to Root, open your CMD. Activate a virtual env
 ```python
  pip install virtualenv
  virtualenv env
@@ -25,10 +25,10 @@ git clone https://github.com/imakshat47/Tenet-Realtime-OM-System.git
 
 4. Install PyAudio
 
-```python
-pip install pipwin
-pipwin install pyaudio
-```
+<!-- ```python
+# pip install pipwin
+# pipwin install pyaudio 
+``` -->
 
 Note: If Error while installing PyAudio use below codes:
 
