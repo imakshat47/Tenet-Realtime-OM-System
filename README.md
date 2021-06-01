@@ -25,10 +25,10 @@ git clone https://github.com/imakshat47/Tenet-Realtime-OM-System.git
 
 4. Install PyAudio
 
-<!-- ```python
-# pip install pipwin
-# pipwin install pyaudio 
-``` -->
+```python
+pip install pipwin
+pipwin install pyaudio 
+```
 
 Note: If Error while installing PyAudio use below codes:
 
@@ -46,7 +46,7 @@ pip install asset/PyAudio-0.2.11-cp37-cp37-win_amd64.whl
 
 5. Install Other Requirements:
 ```python
- pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 
@@ -59,7 +59,7 @@ pip install asset/PyAudio-0.2.11-cp37-cp37-win_amd64.whl
 
 2. Run below to hit start:
 ```pyhton
-   py init.py
+py init.py
 ```
 
 
