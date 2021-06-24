@@ -29,6 +29,7 @@ class BaseClass(object):
     # # File System
     _audio_files_dir = "dataset/audio/"
     _text_files_dir = "dataset/text/"
+    _pickle_dir = setup._pickle_dir
 
     # SentimentScore
     _ordinal_0 = " 😁 Neutral"

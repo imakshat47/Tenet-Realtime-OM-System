@@ -83,6 +83,7 @@ class Listner(BaseClass):
                             self._text_file_extn, self._text, False, 'w')
         _polarity = self._sentimeter._score(self._text)
         self._debug("Listner"+self._process_complete_msg)
+        print(self._text, str(_polarity), self._file_middle)
         return self._text, str(_polarity), self._file_middle
 
 

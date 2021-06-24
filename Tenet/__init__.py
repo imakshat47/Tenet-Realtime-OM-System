@@ -23,8 +23,8 @@ class Models(Listner):
         self._out_msg("System Closed!!")
         self._check_debug("Model"+self._class_desctruct_msg)
 
-    def _model1(self):
+    def _model_(self):
         self._listner._listen_in_background()
         _moedel_output = self._check_debug(
-            "Model 1 "+self._process_complete_msg)
+            "Model"+self._process_complete_msg)
         print(_moedel_output)

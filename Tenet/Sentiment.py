@@ -1,5 +1,7 @@
 from textblob import TextBlob
 from Tenet.Super import BaseClass
+import pickle
+import sklearn
 
 
 class SentimentScore(BaseClass):
@@ -29,9 +31,22 @@ class SentimentScore(BaseClass):
             __txtBlob = TextBlob(_txt)
             __text = str(__txtBlob.correct())
             self._check_debug("Intermediate Corrected Text: "+__text)
-            _sentiment_score = round(TextBlob(__text).sentiment.polarity, self._sentiment_score_round_of_digit)
+            _sentiment_score = round(
+                TextBlob(__text).sentiment.polarity, self._sentiment_score_round_of_digit)
             self._show(self._sentimeter_msg+self.__ordinals(_sentiment_score) +
                        " [ Score: "+str(_sentiment_score)+" ]")
         except:
             self._show("Textblob"+self._status_err_msg)
         return _sentiment_score
+
+    def _ssg(self, text=''):
+        try:
+            vectorizer = pickle.load(
+                open(self._pickle_dir + 'vectorizer.sav', 'rb'))
+            classifier = pickle.load(
+                open(self._pickle_dir + 'classifier.sav', 'rb'))
+            text_vector = vectorizer.transform([text])
+            score_class = classifier.predict(text_vector)
+        except:
+            self._show("SSG"+self._status_err_msg)
+        return score_class
