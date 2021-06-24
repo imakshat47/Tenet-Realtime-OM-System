@@ -7,9 +7,9 @@ except Exception as e:
     exit("Library Exception in AudioText: ", e)
 
 
-class Listner(BaseClass):
+class Listener(BaseClass):
     def __init__(self):
-        self._check_debug("Listner"+self._class_init_msg)
+        self._check_debug("Listener"+self._class_init_msg)
         self.__recognizer = Recognizer()
         self.__mic = Microphone()
         self._sentimeter = SentimentScore()
@@ -28,8 +28,6 @@ class Listner(BaseClass):
         self._audio_file_extn = ".wav"
         self._text_file_extn = ".txt"
 
-
-
     ''' Audio to text converter '''
 
     def _audio_to_text(self, audio):
@@ -46,8 +44,6 @@ class Listner(BaseClass):
         self._debug("Text Collected: "+_text)
         return _text
 
-
-
     ''' Callback for _listen_in_background() '''
 
     def __callback(self, _recognizer, audio):
@@ -58,8 +54,6 @@ class Listner(BaseClass):
         self._polarity = self._sentimeter._score(_text)
         self._text += _text
         self._polarity = self._sentimeter._score(self._text)
-
-
 
     ''' Listen in background '''
 
@@ -82,11 +76,7 @@ class Listner(BaseClass):
         self._write_to_file(self._text_files_dir+self._file_middle +
                             self._text_file_extn, self._text, False, 'w')
         _polarity = self._sentimeter._score(self._text)
-        self._debug("Listner"+self._process_complete_msg)
-        print(self._text, str(_polarity), self._file_middle)
-        return self._text, str(_polarity), self._file_middle
-
-
+        self._debug("Listener"+self._process_complete_msg)                
 
     ''' Write data content to file '''
 
@@ -96,7 +86,7 @@ class Listner(BaseClass):
                 if _file_type_audio:
                     file.write(data.get_wav_data())
                 else:
-                    file.write(data)
+                    file.write(' ' + data)
                     file.close()
             self._debug("File Done: "+filename)
         except Exception as e:

@@ -32,9 +32,9 @@ class BaseClass(object):
     _pickle_dir = setup._pickle_dir
 
     # SentimentScore
-    _ordinal_0 = " 😁 Neutral"
-    _ordinal_1 = " 😊 Good"
-    _ordinal_2 = " 😀 Very Good "
+    _ordinal_0 = " 😊 Neutral"
+    _ordinal_1 = " 😀 Good"
+    _ordinal_2 = " 😁 Very Good "
     _ordinal_3 = " 😌 Bad"
     _ordinal_4 = " 😓 Very Bad"
 
