@@ -15,9 +15,9 @@ class BaseClass(object):
     _debuger_active = True and setup._debuger_active
 
     # AudioText Class
-    _sleep_time = 1.5
+    _sleep_time = 1
     _noise_check_duration = 2
-    _listen_in_background_sleep = int(30) #  30s  #// For 3min
+    _listen_in_background_sleep = int(45) #  30s  #// For 3min
     _background_noise_msg = "Adjusting for Background Noise!!\nA moment of silence, Please..."
     _available_device_msg = "Available Devices: "
 
@@ -57,8 +57,8 @@ class BaseClass(object):
     _process_complete_msg = " Process Completed!!"
 
     # Processing
-    _processing_count = 6
-    _interval = 0.8
+    _processing_count = 1
+    _interval = 0.5
 
     ''' Constructor '''
 

@@ -26,15 +26,19 @@ class SentimentScore(BaseClass):
 
     ''' Preforms Sentiment Score Generator '''
 
-    def _score(self, _txt=''):
+    def _score(self, _txt='', _global=False):
         try:
             __txtBlob = TextBlob(_txt)
             __text = str(__txtBlob.correct())
             self._check_debug("Intermediate Corrected Text: "+__text)
             _sentiment_score = round(
                 TextBlob(__text).sentiment.polarity, self._sentiment_score_round_of_digit)
-            self._show(self._sentimeter_msg+self.__ordinals(_sentiment_score) +
-                       " [ Score: "+str(_sentiment_score)+" ]")
+            if _global:
+                self._show("!! Sentimeter Output: "+self.__ordinals(_sentiment_score) +
+                           " [ Score: "+str(_sentiment_score)+" ]")
+            else:
+                self._show(self._sentimeter_msg +
+                           self.__ordinals(_sentiment_score))
         except:
             self._show("Textblob"+self._status_err_msg)
         return _sentiment_score

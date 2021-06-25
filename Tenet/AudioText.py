@@ -33,15 +33,16 @@ class Listener(BaseClass):
     def _audio_to_text(self, audio):
         _text = ""
         try:
-            # _text = _recognizer.recognize_google(audio)
             _text = self.__recognizer.recognize_google(audio)
+            self._show("Text Collected.")
         except RequestError:
             self._show(self._slow_internet_err)
         except UnknownValueError:
             self._show(self._unknown_err)
         except:
             self._show("Exception!!")
-        self._debug("Text Collected: "+_text)
+        if self._debuger_active:
+            self._debug("Text Collected: "+_text)
         return _text
 
     ''' Callback for _listen_in_background() '''
@@ -50,10 +51,11 @@ class Listener(BaseClass):
         self._threads()
         self._write_to_file(self._audio_files_dir +
                             self._file_middle+self._audio_file_extn, audio)
-        _text = self._audio_to_text(audio)
+        _text = self._audio_to_text(audio) + '. '
         self._polarity = self._sentimeter._score(_text)
         self._text += _text
-        self._polarity = self._sentimeter._score(self._text)
+        if self._debuger_active:
+            self._polarity = self._sentimeter._score(self._text)
 
     ''' Listen in background '''
 
@@ -72,11 +74,12 @@ class Listener(BaseClass):
             self._show("Keyboard Interrupt!!")
             pass
         stop_listening(wait_for_stop=True)
-        self._debug("Text Collected: "+self._text)
+        if self._debuger_active:
+            self._debug("Text Collected: "+self._text)
         self._write_to_file(self._text_files_dir+self._file_middle +
                             self._text_file_extn, self._text, False, 'w')
-        _polarity = self._sentimeter._score(self._text)
-        self._debug("Listener"+self._process_complete_msg)                
+        self._sentimeter._score(self._text, True)
+        self._debug("Listener"+self._process_complete_msg)
 
     ''' Write data content to file '''
 
@@ -84,10 +87,14 @@ class Listener(BaseClass):
         try:
             with open(filename, mode=mode) as file:
                 if _file_type_audio:
+                    self._show("Audio detected.")
                     file.write(data.get_wav_data())
                 else:
-                    file.write(' ' + data)
-                    file.close()
+                    file.write(data)
+                    self._show(
+                        "Pushed to DB and a Local copy Saved: " + filename)
+                file.close()
             self._debug("File Done: "+filename)
         except Exception as e:
+            print(e)
             self._show("Write to File Error!! "+filename)
